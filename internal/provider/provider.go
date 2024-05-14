@@ -29,20 +29,20 @@ type ScaffoldingProvider struct {
 
 // ScaffoldingProviderModel describes the provider data model.
 type ScaffoldingProviderModel struct {
-	Endpoint types.String `tfsdk:"endpoint"`
+	Host types.String `tfsdk:"host"`
 }
 
 func (p *ScaffoldingProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "scaffolding"
+	resp.TypeName = "devops-bootcamp"
 	resp.Version = p.version
 }
 
 func (p *ScaffoldingProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
-			"endpoint": schema.StringAttribute{
-				MarkdownDescription: "Example provider attribute",
-				Optional:            true,
+			"host": schema.StringAttribute{
+				MarkdownDescription: "The hostname for the api server",
+				Required:            true,
 			},
 		},
 	}
